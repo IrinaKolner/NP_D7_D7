@@ -95,12 +95,6 @@ class NewsDelete(DeleteView):
     template_name = 'news_delete.html'
     success_url = reverse_lazy('news')
 
-    # def form_valid(self, form):
-    #     post = form.save(commit=False)
-    #     if post.post_type == 'AR':
-    #         return HttpResponse('Такой новости не существует.')
-    #     return super().form_valid(form)
-
 
 class ArticleCreate(CreateView):
     form_class = PostForm
@@ -118,11 +112,6 @@ class ArticleUpdate(UpdateView):
     model = Post
     template_name = 'article_create.html'
 
-    # def form_valid(self, form):
-    #     post = form.save(commit=False)
-    #     post.post_type = 'AR'
-    #     return super().form_valid(form)
-
     def form_valid(self, form):
         post = form.save(commit=False)
         if post.post_type == 'NE':
@@ -135,14 +124,4 @@ class ArticleDelete(DeleteView):
     model = Post
     template_name = 'article_delete.html'
     success_url = reverse_lazy('news')
-
-    # def form_valid(self, form):
-    #     post = form.save(commit=False)
-    #     if post.post_type == 'NE':
-    #         return HttpResponse('Такой статьи не существует.')
-    #     return super().form_valid(form)
-
-
-
-
 
